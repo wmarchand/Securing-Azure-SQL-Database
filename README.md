@@ -22,11 +22,65 @@ In this project you will create a virtual network in Azure and utilize it to lim
 
 <h2>Program walk-through:</h2>
 
-<h3> 1) Create a Resource Group</h3>
+<h3> 1) Setting up your environment</h3>
 
 <br />
 <p align="center">
-There are multiple ways to get to the start of creating a Resource Group. For this lab, I clicked on the Resource Group button on the home page of the Azure Portal. <br/>
-<img src="https://i.imgur.com/a26tkVw.png"/>
+First thing we need to do to set up our environment is to create a Resource Group. I named mine RG-USE-SecureDB. <br/>
+<img src=""/>
+<br />
+<br />
+Next we need to make a Virtual Network. I named mine VNET-USE-SecureDB.  <br/>
+<img src=""/>
+<br />
+<br />
+We do not need a lot of IP addresses, for my address space I used 10.2.0.0/24. I also added a Subnet with the same range and named it SNET-USE-SecureDB.  <br/>
+<img src=""/>
+<br />
+<br />
+We will now create a VM for our environment. I named mine VM-USE-SecureDB. Select Noinfrastructure redundancy required, choose the default Ubuntu Server (make sure it is LTS), and the standard B1s will do.  <br/>
+<img src=""/>
+<br />
+<br />
+We are going to be using SSH public key as our authentication type, choose your username and key pair name, also ensure that port 22 is allowed because we are planning on connecting to our VM through SSH.  <br/>
+<img src=""/>
+<br />
+<br />
+Change the OS disk type to Standard HDD.   <br/>
+<img src=""/>
+<br />
+<br />
+Finally, we need to create a SQL Database. Choose a name, I chose DB-USE-SecureDB. Click on Create new under Server.  <br/>
+<img src=""/>
+<br />
+<br />
+Choose the server name, mine is sql-srv-use. For the authentication method choose Use SQL authentication. Make sure you remember the username and password you set up.  <br/>
+<img src=""/>
+<br />
+<br />
+Click on configure database and choose Basic(For less demanding workloads) under the DTU-based purchasing model. <br/>
+<img src=""/>
+<br />
+<br />
+Scroll to the bottom and choose Locally-redundant backup storage.  <br/>
+<img src=""/>
+<br />
+<br />
+Under the Networking tab, select public endpoint. This is not a secure setting but we will fix that later.  <br/>
+<img src=""/>
+<br />
+<br />
+In the additional setting tab under Use existing data, choose Sample. Then Review + create.  <br/>
+<img src=""/>
+<br />
+<br />
+
+<h3> 2) Limiting network access to your database</h3>
+
+
+
+<!--
+  <br/>
+<img src=""/>
 <br />
 <br />
